@@ -1,4 +1,4 @@
-[chess-analysis-api](https://www.npmjs.com/package/chess-analysis-api)
+Forked from [chess-analysis-api](https://www.npmjs.com/package/chess-analysis-api) and modified. Fix minification bug after webpack bundling (check this for further information: [MDN: Function.name](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name), change import/require statements on Worker (web-worker), Chess constructor)
 
 > chess engine that consume [lichess API](https://lichess.org/api) and [wasm of stockfish](https://www.npmjs.com/package/stockfish) for purpose a chess engine with hight level interface.
 
