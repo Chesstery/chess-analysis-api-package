@@ -10,10 +10,4 @@ export const MIN_DEPTH = 2;
 export const MAX_DEPTH = 60;
 export const DEFAULT_DEPTH = 8;
 
-export enum PROVIDERS {
-  LICHESS_BOOK,
-  LICHESS_CLOUD_EVAL,
-  STOCKFISH
-};
-
 // https://explorer.lichess.ovh/master?fen=rnbqkbnr/ppp1pppp/8/3p4/8/5P2/PPPPP1PP/RNBQKBNR w KQkq - 0 2
