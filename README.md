@@ -151,3 +151,5 @@ export type AnalysisOutputType = {
   moves: AnalysisOutputLineType[];
 };
 ```
+
+for the reason node.js don't work with webworkers to pass all the test checkout to the 'all-test-passed' branch, which differ only in require/import statements for stockfish (and its data parsing) and Chess constructor
