@@ -1,7 +1,7 @@
 import { lichessOpening } from './providers/lichess-opening';
 import { lichessCloudEval } from './providers/lichess-cloud-eval';
 import { stockfishEval } from './providers/stockfish-eval';
-import { ChessInstance } from 'chess.js';
+import { ChessInstance, Chess } from 'chess.js';
 import {
   DEFAULT_DEPTH,
   MIN_DEPTH,
@@ -12,11 +12,11 @@ import {
 } from './constants';
 
 //@ts-ignore
-const Chess = require('chess.js');
+// const Chess = require('chess.js');
 
 export enum PROVIDERS {
   LICHESS_BOOK = 'lichessOpening',
-  LICHESS_CLOUD = 'lichessCloudEval',
+  LICHESS_CLOUD_EVAL = 'lichessCloudEval',
   STOCKFISH = 'stockfishEval',
 }
 
@@ -41,7 +41,7 @@ function clamp(value: number, min: number, max: number) {
 function getProviderByName(providerName: PROVIDERS) {
   console.log(providerName);
   switch (providerName) {
-    case PROVIDERS.LICHESS_CLOUD:
+    case PROVIDERS.LICHESS_CLOUD_EVAL:
       return lichessCloudEval;
     case PROVIDERS.LICHESS_BOOK:
       return lichessOpening;
@@ -140,13 +140,13 @@ export default function getAnalysis(params: {
     providersOrder = [lichessOpening, lichessCloudEval, stockfishEval];
     namesOfProviders = [
       PROVIDERS.LICHESS_BOOK,
-      PROVIDERS.LICHESS_CLOUD,
+      PROVIDERS.LICHESS_CLOUD_EVAL,
       PROVIDERS.STOCKFISH,
     ];
   } else if (countPlayedMoves < 35) {
     // [lichessCloudEval, stockfishEval]
     providersOrder = [lichessCloudEval, stockfishEval];
-    namesOfProviders = [PROVIDERS.LICHESS_CLOUD, PROVIDERS.STOCKFISH];
+    namesOfProviders = [PROVIDERS.LICHESS_CLOUD_EVAL, PROVIDERS.STOCKFISH];
   } else {
     // stockfishEval
     providersOrder = [stockfishEval];

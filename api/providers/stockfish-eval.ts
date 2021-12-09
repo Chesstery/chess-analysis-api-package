@@ -1,4 +1,5 @@
 import { PATTERN_UCI_MOVE } from './../constants';
+const STOCKFISH = require('stockfish');
 
 export type StockfishScoreType = 'cp' | 'mate'; // centipawn eval or checkmate find
 
@@ -92,13 +93,13 @@ export function stockfishEval(params: {
       resolve: (data: StockfishEval) => void,
       reject: (error: any) => void
     ): void => {
-      const engine = new Worker('/stockfish.js');
+      const engine = STOCKFISH();
       engine.postMessage('uci');
 
       const lines: StockfishEntry[][] = [];
 
       //@ts-ignore
-      engine.onmessage = function ({ data }: { data: string }) {
+      engine.onmessage = function (data: string) {
         if (data === 'uciok') {
           engine.postMessage(`position fen ${params.fen}`);
           engine.postMessage(`setoption name multipv value ${params.multipv}`);
